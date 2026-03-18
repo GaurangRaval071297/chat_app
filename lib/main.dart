@@ -5,25 +5,31 @@ import 'screens/splash_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(MyApp());
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.android,
+    );
+  } catch (e) {
+    print('Firebase initialization error: $e');
+  }
+
+  runApp(MaterialApp(
+    title: 'Chat App',
+    theme: ThemeData(
+      primarySwatch: Colors.green,
+      visualDensity: VisualDensity.adaptivePlatformDensity,
+    ),
+    home: SplashScreen(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: FutureBuilder(
-        future: Firebase.initializeApp(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return SplashScreen();
-          }
-          return Scaffold(
-            body: Center(child: CircularProgressIndicator()),
-          );
-        },
-      ),
-    );
-  }
+class DefaultFirebaseOptions {
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyAX2WcLtoUjg_WTbCeg85-2z7tOD0Y4cZ4',
+    appId: '1:76050610669:android:1b31a31ae32f2613470fe4',
+    messagingSenderId: '76050610669',
+    projectId: 'chatapp-98561',
+    storageBucket: 'chatapp-98561.firebasestorage.app',
+  );
 }

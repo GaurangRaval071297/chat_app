@@ -23,15 +23,16 @@ class _SplashScreenState extends State<SplashScreen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     String? phone = prefs.getString("phone");
+    String? email = prefs.getString("email");
 
     Timer(Duration(seconds: 3), () {
 
-      if(phone != null){
+      if(email != null){
 
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => ChatDashboard(phone: phone),
+            builder: (context) => ChatDashboard(email: email),
           ),
         );
 

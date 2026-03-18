@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color primary = Color(0xFF6BAF92);
-  static const Color lightGreen = Color(0xFFA8D5BA);
-  static const Color forest = Color(0xFF3D6B52);
-  static const Color background = Color(0xFFF1F8F5);
-
-  static const Color messageSender = Color(0xFFB7E4C7);
-  static const Color messageReceiver = Colors.white;
-
-  static const Color textPrimary = Color(0xFF2C3E50);
-  static const Color textSecondary = Color(0xFF7F8C8D);
-  static const Color textLight = Colors.white;
-
-  static const Color appBarBackground = Color(0xFF3D6B52);
-  static const Color sendButton = Color(0xFF6BAF92);
-  static const Color inputBackground = Color(0xFFF0F0F0);
-  static const Color divider = Color(0xFFE0E0E0);
-  static const Color shadow = Color(0x1A000000);
+  static const Color primary = Color(0xFF2E7D32); // Dark Green
+  static const Color secondary = Color(0xFF4CAF50); // Medium Green
+  static const Color background = Color(0xFFF5F5F5); // Light Gray
+  static const Color appBarBackground = Color(0xFF1B5E20); // Very Dark Green
+  static const Color textPrimary = Color(0xFF212121); // Dark Gray
+  static const Color textSecondary = Color(0xFF757575); // Medium Gray
+  static const Color textLight = Color(0xFFFFFFFF); // White
+  static const Color messageSender = Color(0xFFDCEDC8); // Light Green
+  static const Color messageReceiver = Color(0xFFFFFFFF); // White
+  static const Color lightGreen = Color(0xFFC8E6C9); // Very Light Green
+  static const Color forest = Color(0xFF1B5E20); // Forest Green
 }
