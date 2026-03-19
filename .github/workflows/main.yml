@@ -18,32 +18,22 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
-          java-version: '17.0.16'
+          java-version: '21'
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
           architecture: x64
 
-      - run: flutter build apk --release --split-per-abi
-      - run: |
-          flutter build ios --no-codesign
-          cd build/ios/iphoneos
-          mkdir Payload
-          cd Payload
-          ln -s ../Runner.app
-          cd ..
-          zip -r app.ipa Payload
+      - run: flutter clean
+      - run: flutter pub get
+
+      # Only build Android - iOS skip karo
+      - name: Build Android APK
+        run: flutter build apk --release --split-per-abi --no-tree-shake-icons
+
       - name: Push to Releases
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/app/outputs/apk/release/*,build/ios/iphoneos/app.ipa"
+          artifacts: "build/app/outputs/apk/release/*"  # Sirf Android APK
           tag: v1.0.${{ github.run_number }}
-          token: ${{ secrets.TOKEN }}
-
-
-
-
-
-
-# push to master, main, develop
-# pull request on main master
+          token: ${{ secrets.chat_app_token }}
