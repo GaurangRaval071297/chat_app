@@ -61,7 +61,7 @@ class _ChatScreenState extends State<ChatScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text("Delete Message"),
-        content: Text("Are you sure you want to delete this message?"),
+        content: Text("Are you sure you want to delete this message? "),
         actions: [
           TextButton(onPressed: () => Navigator.pop(context), child: Text("Cancel")),
           ElevatedButton(
